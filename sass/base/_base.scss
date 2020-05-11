@@ -1,0 +1,52 @@
+*,
+*::after,
+*::before {
+   margin: 0;
+   padding: 0;
+   box-sizing: inherit;
+}
+
+
+html {
+   font-size: 62.5%;
+   /* rem depends on the fz we declare in the root "html"
+   ex: 10px = 1 rem, 25px = 2.5rem 
+   
+   a better practise is to use % insted of px
+   1.Brawsers has by default 16px fz
+   
+   10px/16px = 0,625
+
+   0,625*100% = 62,5%
+   */
+
+  // Example 1rem = 8px; 8/16 = 0.5 * 100% = 50% => fz = 50%
+   
+   @include respond (tab-land) {        // width < 1200
+      font-size: 56.25%;               // 1rem = 9px 9/16
+   }
+   @include respond (tab-port) {        // widft < 900
+      font-size: 50%;                  // 1rem = 8px 8/16
+   }
+   @include respond (big-desktop) {
+      font-size: 75%;                  //  1rem = 12px   12/15 = 75% 
+   }
+
+
+
+
+}
+
+body {
+   box-sizing: border-box;
+   padding: 3rem; 
+
+   @include respond(tab-port){
+      padding: 0;
+   }
+}
+
+::selection {
+   background-color: $color-primary;
+   color: $color-white;
+}
